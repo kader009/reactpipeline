@@ -3,14 +3,15 @@ name: CI/CD for Vite React App
 on:
   push:
     branches:
-      - main
+      - main  # Runs workflow on push to main branch
   pull_request:
     branches:
-      - main
+      - main  # Runs on PR to main branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Using Ubuntu latest environment added here
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -18,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: 'lts/*'  # Use latest LTS version
           cache: 'npm'
 
       - name: Check Node.js and npm versions
@@ -30,10 +31,7 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: | # Multi-line for setting env vars
-          REACT_APP_API_KEY=${{ secrets.abcdef1234567890ghijklmn }} \
-          REACT_APP_BASE_URL=${{ secrets.abcdef1234567890ghijklmn }} \
-          npm run build
+        run: npm run build
 
       - name: Verify dist folder
         run: ls -la dist || echo "⚠️ dist folder is missing!"
@@ -49,6 +47,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
