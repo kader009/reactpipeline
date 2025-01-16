@@ -5,7 +5,7 @@ const App = () => {
   const context = useContext(ContextApi);
   
   if (!context) {
-    return <div>Context are not getting...</div>;
+    return <div>Context are not getting here...</div>;
   }
 
   const { name, obj } = context;
