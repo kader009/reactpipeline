@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://kader009.github.io/reactpipeline/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "homepage": "https://kader009.github.io/reactpipeline"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "19.0.0",
